@@ -18,10 +18,15 @@ const cart = createSlice({
         count:0,
     },
     reducers:{
-       addItems: (state,action)=>{
-            state.items.push({...action.payload, quantity:1});
-            state.count++;
-       },
+      addItems: (state, action) => {
+    state.items.push({
+        ...action.payload, 
+        quantity: 1, 
+        imageSrc: `https://media-assets.swiggy.com/swiggy/image/upload/${action.payload.imageId}`
+    });
+    state.count++;
+},
+
        IncrementItems: (state,action)=>{
          const element =  state.items.find(item=> item.id===action.payload.id); 
          element.quantity+=1;
